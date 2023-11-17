@@ -27,7 +27,8 @@ def parse_trending_repos(html):
             'name': repo.select_one('.h3.lh-condensed').text.replace('\n', '').strip().split('/')[1].strip(),
             'description': repo.select_one('.col-9.text-gray.my-1').text.replace('\n', '').strip() if repo.select_one('.col-9.text-gray.my-1') else None,
             'stars_per_day': stars_per_day,
-            'language': repo.select_one('.d-inline-block.ml-0.mr-3').text.replace('\n', '').strip() if repo.select_one('.d-inline-block.ml-0.mr-3') else None
+            'language': repo.select_one('.d-inline-block.ml-0.mr-3').text.replace('\n', '').strip() if repo.select_one('.d-inline-block.ml-0.mr-3') else None,
+            'url': 'https://github.com' + repo.select_one('.h3.lh-condensed').select_one('a').attrs['href']
         }
         trending_repos.append(repo_info)
 

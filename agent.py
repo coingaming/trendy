@@ -18,5 +18,5 @@ agent = initialize_agent(
 )
 
 agent.run(
-    "What are the trending repos with the most stars on github today?"
+    "What are the trending repos on github today? Show names and urls"
 )
