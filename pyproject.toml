@@ -7,9 +7,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-requests = "^2.31.0"
-openai = "^0.28.1"
-langchain = "^0.0.319"
+gunicorn = "^21.2.0"
+Flask = "^3.0.0"
+bs4 = "^0.0.1"
 
 
 [build-system]

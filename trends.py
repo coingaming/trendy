@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def fetch_trending_page(language):
+def fetch_trending_page(language='all'):
     if language.lower() == 'all':
         url = 'https://github.com/trending'
     else: # in a future it can be language-specific url
@@ -33,8 +33,6 @@ def parse_trending_repos(html):
         trending_repos.append(repo_info)
 
     return trending_repos
-
-# You could then define get_trending_repos as follows:
 
 def get_trending_repos(language="All"):
     html = fetch_trending_page(language)
