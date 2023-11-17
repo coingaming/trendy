@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for github-trendy on 2023-11-17T17:09:08+02:00
+# fly.toml app configuration file generated for github-trendy on 2023-11-17T17:47:41+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -7,6 +7,9 @@ app = "github-trendy"
 primary_region = "arn"
 kill_signal = "SIGINT"
 kill_timeout = "5s"
+
+[build]
+  builder = "paketobuildpacks/builder:base"
 
 [[services]]
   protocol = "tcp"
@@ -25,6 +28,3 @@ kill_timeout = "5s"
     type = "connections"
     hard_limit = 25
     soft_limit = 20
-
-[build]
-  builder = "paketobuildpacks/builder:base"
