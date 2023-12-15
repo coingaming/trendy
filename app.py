@@ -9,5 +9,13 @@ app = Flask(__name__)
 def home():
     return jsonify(get_trending_repos())
 
+@app.route('/weekly', methods=['GET'])
+def home():
+    return jsonify(get_trending_repos(since='weekly'))
+
+@app.route('/monthly', methods=['GET'])
+def home():
+    return jsonify(get_trending_repos(since='monthly'))
+
 if __name__ == '__main__':
     app.run(debug=True)

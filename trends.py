@@ -1,12 +1,18 @@
 import requests
 from bs4 import BeautifulSoup
 
+BASE_TRENDING_URL = 'https://github.com/trending'
+POSSIBLE_TRENDING_VALUES = ['daily', 'weekly', 'monthly']
 
-def fetch_trending_page(language='all'):
-    if language.lower() == 'all':
-        url = 'https://github.com/trending'
+
+def fetch_trending_page(since='daily'):
+    if since.lower() == 'daily':
+        url = BASE_TRENDING_URL
     else: # in a future it can be language-specific url
-        url = 'https://github.com/trending'
+        if since.lower() not in POSSIBLE_TRENDING_VALUES:
+            url = BASE_TRENDING_URL
+        else:
+            url = BASE_TRENDING_URL + '?since=' + since.lower()
     response = requests.get(url)
     response.raise_for_status()  # Check if request was successful
     return response.text
@@ -34,6 +40,6 @@ def parse_trending_repos(html):
 
     return trending_repos
 
-def get_trending_repos(language="All"):
-    html = fetch_trending_page(language)
+def get_trending_repos(since="daily"):
+    html = fetch_trending_page(since)
     return parse_trending_repos(html)
