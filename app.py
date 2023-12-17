@@ -10,11 +10,11 @@ def home():
     return jsonify(get_trending_repos())
 
 @app.route('/weekly', methods=['GET'])
-def home():
+def weekly():
     return jsonify(get_trending_repos(since='weekly'))
 
 @app.route('/monthly', methods=['GET'])
-def home():
+def monthly():
     return jsonify(get_trending_repos(since='monthly'))
 
 if __name__ == '__main__':
